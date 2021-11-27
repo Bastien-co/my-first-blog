@@ -1,13 +1,51 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for billet in billets %}
-        <div class="billet">
-            <div class="date">
-                {{ billet.published_date }}
-            </div>
-            <h2><a href="{% url 'post_detail' pk=billet.pk %}">{{ billet.title }}</a></h2>
-            <p>{{ billet.text|linebreaksbr }}</p>
+    <div class="col-sm-6 text-center">
+        <div class="container-fluid  bg-secondary pb-2 pt-1"><h2>Les animaux</h2></div>
+        <div class="row">
+            {% for animal in animals %}
+                <div class="col-lg-6">
+                    <div class="container-fluid animal text-center pb-4 pt-2 shadow mx-auto">
+                        <h2>{{ animal.id_animal }}</h2>
+                        <img class="img-fluid rounded" src="static/{{ animal.photo }}">
+                        <p class="bg-light rounded-3">Lieu : {{ animal.lieu }}</p>
+                        <button class="btn"><a href="{% url 'animal_detail' id_animal=animal.id_animal %}" class="nodeco">Plus de details</a></button>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block content1 %}
+    <div class=" col-sm-6 text-center">
+        <div class="container-fluid  bg-secondary pb-2 pt-1"><h2>Les equipements</h2></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="container-fluid animal text-center pb-4 pt-2 shadow mx-auto">
+                    <h2>Roue</h2>
+                    <img class="img-fluid rounded" src="static/roue.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid animal text-center pb-4 pt-2 shadow mx-auto">
+                    <h2>Nid</h2>
+                    <img class="img-fluid rounded" src="static/nid.jpeg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid animal text-center pb-4 pt-2 shadow mx-auto">
+                    <h2>Litiere</h2>
+                    <img class="img-fluid rounded" src="static/litiere.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid animal text-center pb-4 pt-2 shadow mx-auto">
+                    <h2>Mangeoire</h2>
+                    <img class="img-fluid rounded" src="static/mangeoire.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

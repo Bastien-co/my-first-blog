@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-header text-center" id=" bg_green">
+    <div class="row">
+        <div class="col-6 my-auto">
+            <h1>
+                <a href="/">{{ animal.id_animal }}</a>
+            </h1>
+            <form method="POST" class="post-form m-3 p-3">{% csrf_token %}
+                <b class="m-3"> Changer : </b> {{ form.as_ul }}
+                <button type="submit" class="btn btn-outline-light m-3">OK</button>
+                <a href="{% url 'post_list' %}" class="text-dark">Back</a>
+            </form>
+        </div>
+        <div class="col-sm-6 text-center ">
+            <div><img class="img-fluid rounded-circle"src="/static/{{ photo }}"></div>
+            <p class="text-info"> Lieu actuel : {{lieu}}</p>
+            <p class="text-info"> Etat actuel : {{etat}}</p>
+        </div>
+    </div>
+</div>
+{% if message != ''%}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+{% endif %}
+ 
+ 
+{% endblock %}
